@@ -1,0 +1,47 @@
+---
+import FadeUp from '../react/FadeUp.tsx';
+import { SERVICES } from '../../lib/content';
+---
+
+<section id="servicios" class="bg-sand-100 py-section">
+  <div class="mx-auto max-w-7xl px-6 md:px-12">
+    <div class="grid grid-cols-1 gap-12 md:grid-cols-12 md:gap-16">
+      <FadeUp client:visible className="md:col-span-4">
+        <p class="text-xs uppercase tracking-[0.25em] text-ink-mute">
+          Qué hacemos
+        </p>
+        <h2 class="mt-6 text-display-lg">
+          Cuatro maneras{' '}
+          <span class="font-display italic font-light text-ink-soft">
+            de empezar.
+          </span>
+        </h2>
+        <p class="mt-8 max-w-prose text-base leading-relaxed text-ink-soft">
+          No todos los proyectos arrancan igual. Te acompaño desde una
+          consulta breve hasta la dirección integral de tu obra — siempre
+          con la misma honestidad y dedicación.
+        </p>
+      </FadeUp>
+
+      <div class="md:col-span-8">
+        <ul class="border-t border-sand-300/60">
+          {SERVICES.map((s, idx) => (
+            <FadeUp client:visible delay={idx * 0.08} as="div">
+              <li class="grid grid-cols-12 gap-6 border-b border-sand-300/60 py-8 md:py-10">
+                <span class="col-span-2 font-display text-3xl text-sand-500 md:text-4xl">
+                  {s.n}
+                </span>
+                <div class="col-span-10">
+                  <h3 class="text-xl text-ink md:text-2xl">{s.title}</h3>
+                  <p class="mt-2 max-w-prose text-sm leading-relaxed text-ink-soft md:text-base">
+                    {s.desc}
+                  </p>
+                </div>
+              </li>
+            </FadeUp>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

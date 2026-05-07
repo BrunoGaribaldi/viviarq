@@ -1,0 +1,34 @@
+---
+import '../styles/global.css';
+import SmoothScroll from '../components/react/SmoothScroll.tsx';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Viviana Girardi · Arquitecta',
+  description = 'Arquitectura real para la vida cotidiana. Proyectos, remodelaciones y dirección de obra.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#FAF7F2" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_AR" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <SmoothScroll client:load />
+    <slot />
+  </body>
+</html>

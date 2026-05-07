@@ -1,0 +1,56 @@
+---
+import FadeUp from '../react/FadeUp.tsx';
+import { ABOUT_PHOTO } from '../../lib/content';
+---
+
+<section id="sobre-mi" class="bg-sand-50 py-section">
+  <div class="mx-auto max-w-7xl px-6 md:px-12">
+    <div class="grid grid-cols-1 gap-12 md:grid-cols-12 md:gap-16">
+      <FadeUp client:visible className="md:col-span-5">
+        <div class="relative aspect-[4/5] overflow-hidden bg-sand-200">
+          <img
+            src={ABOUT_PHOTO.src}
+            alt={ABOUT_PHOTO.alt}
+            class="h-full w-full object-cover"
+            loading="lazy"
+          />
+        </div>
+        <p class="mt-4 text-xs uppercase tracking-[0.2em] text-ink-mute">
+          Estudio independiente · Argentina
+        </p>
+      </FadeUp>
+
+      <FadeUp client:visible delay={0.15} className="md:col-span-7">
+        <p class="text-xs uppercase tracking-[0.25em] text-ink-mute">
+          Sobre mí
+        </p>
+
+        <h2 class="mt-6 text-display-lg">
+          Soy Viviana Girardi.
+          <span class="block font-display italic font-light text-ink-soft">
+            Estética, función y sentido común.
+          </span>
+        </h2>
+
+        <div class="mt-10 max-w-prose space-y-5 text-base leading-relaxed text-ink-soft md:text-lg">
+          <p>
+            Hace años que me dedico a pensar casas, locales y reformas para
+            personas reales — con presupuestos reales, plazos reales y
+            ganas reales de vivir mejor.
+          </p>
+          <p>
+            Mi enfoque es funcional antes que decorativo. Me interesa que cada
+            metro cuadrado trabaje para vos: que la luz entre por donde tiene
+            que entrar, que la cocina esté cerca de donde la usás, que la casa
+            te reciba como te tiene que recibir.
+          </p>
+          <p>
+            Creo profundamente en democratizar el buen diseño. La arquitectura
+            no debería ser un privilegio: debería ser una herramienta que
+            cualquiera pueda tener al alcance para transformar su día a día.
+          </p>
+        </div>
+      </FadeUp>
+    </div>
+  </div>
+</section>
