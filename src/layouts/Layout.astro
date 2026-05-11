@@ -1,31 +1,95 @@
 ---
 import '../styles/global.css';
 import SmoothScroll from '../components/react/SmoothScroll.tsx';
+import { SITE, SEO, CONTACT, SERVICE_AREAS, SERVICES } from '../lib/content';
 
 interface Props {
   title?: string;
   description?: string;
 }
 
-const {
-  title = 'Viviana Girardi · Arquitecta',
-  description = 'Arquitectura real para la vida cotidiana. Proyectos, remodelaciones y dirección de obra.',
-} = Astro.props;
+const { title = SEO.title, description = SEO.description } = Astro.props;
+const canonical = new URL(Astro.url.pathname, SITE.url).toString();
+const ogImage = new URL(SEO.ogImage, SITE.url).toString();
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  '@id': `${SITE.url}/#business`,
+  name: `${SITE.name} · ${SITE.role}`,
+  alternateName: 'Estudio Viviana Girardi',
+  image: ogImage,
+  logo: `${SITE.url}/images/logo.png`,
+  description: SEO.description,
+  url: SITE.url,
+  email: CONTACT.email,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: SITE.city,
+    addressRegion: SITE.province,
+    addressCountry: SITE.country,
+  },
+  areaServed: SERVICE_AREAS.map((name) => ({
+    '@type': 'City',
+    name,
+  })),
+  priceRange: '$$',
+  sameAs: [CONTACT.instagram, CONTACT.linkedin],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Servicios de Arquitectura',
+    itemListElement: SERVICES.map((s) => ({
+      '@type': 'Offer',
+      itemOffered: {
+        '@type': 'Service',
+        name: s.title,
+        description: s.desc,
+      },
+    })),
+  },
+};
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="es-AR">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="description" content={description} />
+    <meta name="keywords" content={SEO.keywords} />
+    <meta name="author" content={SITE.name} />
     <meta name="theme-color" content="#FAF7F2" />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
+    <meta name="geo.region" content="AR-X" />
+    <meta name="geo.placename" content={`${SITE.city}, ${SITE.province}`} />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+
+    <link rel="canonical" href={canonical} />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="es_AR" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1523" />
+    <meta property="og:image:height" content="1007" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <link rel="preload" as="image" href="/images/carrusel/hero-1.jpeg" fetchpriority="high" />
+
     <title>{title}</title>
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </head>
   <body>
     <SmoothScroll client:load />

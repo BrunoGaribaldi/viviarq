@@ -1,23 +1,28 @@
 ---
 import FadeUp from '../react/FadeUp.tsx';
-import { ABOUT_PHOTO } from '../../lib/content';
+import { ABOUT_PHOTO, SITE } from '../../lib/content';
 ---
 
 <section id="sobre-mi" class="bg-sand-50 py-section">
-  <div class="mx-auto max-w-7xl px-6 md:px-12">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 md:px-12">
     <div class="grid grid-cols-1 gap-12 md:grid-cols-12 md:gap-16">
       <FadeUp client:visible className="md:col-span-5">
-        <div class="relative aspect-[4/5] overflow-hidden bg-sand-200">
-          <img
-            src={ABOUT_PHOTO.src}
-            alt={ABOUT_PHOTO.alt}
-            class="h-full w-full object-cover"
-            loading="lazy"
-          />
+        <div class="mx-auto w-full max-w-[360px] md:mx-0">
+          <div class="relative aspect-[3/5] overflow-hidden bg-sand-200">
+            <img
+              src={ABOUT_PHOTO.src}
+              alt={ABOUT_PHOTO.alt}
+              width={ABOUT_PHOTO.width}
+              height={ABOUT_PHOTO.height}
+              loading="lazy"
+              decoding="async"
+              class="h-full w-full object-cover object-center"
+            />
+          </div>
+          <p class="mt-4 text-xs uppercase tracking-[0.2em] text-ink-mute">
+            Estudio independiente · {SITE.city}, {SITE.province}
+          </p>
         </div>
-        <p class="mt-4 text-xs uppercase tracking-[0.2em] text-ink-mute">
-          Estudio independiente · Argentina
-        </p>
       </FadeUp>
 
       <FadeUp client:visible delay={0.15} className="md:col-span-7">
@@ -34,9 +39,11 @@ import { ABOUT_PHOTO } from '../../lib/content';
 
         <div class="mt-10 max-w-prose space-y-5 text-base leading-relaxed text-ink-soft md:text-lg">
           <p>
-            Hace años que me dedico a pensar casas, locales y reformas para
-            personas reales — con presupuestos reales, plazos reales y
-            ganas reales de vivir mejor.
+            Soy arquitecta y dirijo mi estudio independiente en
+            <strong class="font-medium text-ink">Villa Carlos Paz, Córdoba</strong>.
+            Hace años me dedico a pensar casas, locales y reformas para personas
+            reales — con presupuestos reales, plazos reales y ganas reales de
+            vivir mejor.
           </p>
           <p>
             Mi enfoque es funcional antes que decorativo. Me interesa que cada

@@ -1,17 +1,41 @@
-// Copy centralizado y datos de contacto.
+// Copy centralizado, datos de contacto y metadata SEO.
 // TODO: reemplazar todos los placeholders marcados con valores reales.
 
 export const SITE = {
   name: 'Viviana Girardi',
   role: 'Arquitecta',
   domain: 'vivianagirardi.com',
+  url: 'https://vivianagirardi.com',
+  city: 'Villa Carlos Paz',
+  province: 'Córdoba',
+  country: 'AR',
+};
+
+export const SEO = {
+  title: 'Viviana Girardi · Arquitecta en Villa Carlos Paz, Córdoba',
+  description:
+    'Estudio de arquitectura en Villa Carlos Paz y Córdoba. Proyectos, dirección de obra, remodelaciones y planos. Diseño funcional, honesto y accesible para tu casa.',
+  keywords: [
+    'arquitecta',
+    'arquitecto',
+    'estudio arquitectónico',
+    'arquitectura Villa Carlos Paz',
+    'arquitectura Córdoba',
+    'constructora casa',
+    'constructor',
+    'proyecto casa Carlos Paz',
+    'dirección de obra Córdoba',
+    'remodelaciones',
+    'planos municipales Córdoba',
+    'arquitecta independiente Carlos Paz',
+  ].join(', '),
+  ogImage: '/images/carrusel/hero-1.jpeg',
 };
 
 export const CONTACT = {
-  // TODO: número real con código de país, sin signos. Ej: 5493411234567
+  // TODO: número real con código de país, sin signos. Ej: 5493541234567
   whatsappNumber: '5490000000000',
   whatsappMessage: 'Hola Viviana, me gustaría charlar sobre un proyecto.',
-  // TODO: email real
   email: 'arqvivianagirardi@gmail.com',
   // TODO: handles reales
   instagram: 'https://instagram.com/vivianagirardi',
@@ -24,136 +48,194 @@ export const waLink = (() => {
 })();
 
 export const SERVICE_AREAS = [
-  // TODO: confirmar zonas reales
-  'Córdoba',
   'Villa Carlos Paz',
-  'Aledaños',
+  'Córdoba',
+  'Alta Gracia',
+  'La Falda',
+  'Villa Allende',
 ];
 
 export const SERVICES = [
   {
     n: '01',
     title: 'Proyecto y Dirección de Obra',
-    desc: 'Acompañamiento integral desde la idea hasta la entrega de llaves.',
+    desc: 'Acompañamiento integral desde la idea hasta la entrega de llaves, en Villa Carlos Paz y zonas de Córdoba.',
   },
   {
     n: '02',
     title: 'Remodelaciones',
-    desc: 'Repensamos tu casa o local actual con foco en uso real y presupuesto.',
+    desc: 'Repensamos tu casa, departamento o local actual con foco en uso real y presupuesto.',
   },
   {
     n: '03',
     title: 'Planos y Documentación',
-    desc: 'Planos municipales, modificaciones y regularizaciones.',
+    desc: 'Planos municipales, modificaciones y regularizaciones para trámites en Córdoba.',
   },
   {
     n: '04',
     title: 'Asesoramiento',
-    desc: 'Una hora de consultoría para destrabar decisiones puntuales.',
+    desc: 'Una hora de consultoría para destrabar decisiones puntuales antes de empezar.',
   },
 ];
 
-// Placeholders Unsplash — reemplazar con fotos reales de Viviana cuando estén.
+// Hero — 5 imágenes landscape de alta resolución (≥1300px ancho).
+// Las imágenes verticales/pequeñas se descartaron del hero para evitar pixelado.
 export const HERO_SLIDES = [
   {
-    src: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1800&q=80&auto=format&fit=crop',
-    alt: 'Interior cálido con paleta neutra',
+    src: '/images/carrusel/hero-1.jpeg',
+    alt: 'Vivienda contemporánea diseñada por estudio de arquitectura en Villa Carlos Paz',
+    width: 1523,
+    height: 1007,
   },
   {
-    src: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1800&q=80&auto=format&fit=crop',
-    alt: 'Living iluminado con grandes ventanales',
+    src: '/images/carrusel/hero-2.jpeg',
+    alt: 'Interior cálido con materiales nobles · proyecto residencial Córdoba',
+    width: 1600,
+    height: 910,
   },
   {
-    src: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1800&q=80&auto=format&fit=crop',
-    alt: 'Cocina contemporánea minimalista',
+    src: '/images/carrusel/hero-3.jpeg',
+    alt: 'Espacio integrado con luz natural · arquitectura funcional Carlos Paz',
+    width: 1473,
+    height: 820,
   },
   {
-    src: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1800&q=80&auto=format&fit=crop',
-    alt: 'Fachada residencial con materiales nobles',
+    src: '/images/carrusel/hero-4.jpeg',
+    alt: 'Detalle constructivo · obra en Villa Carlos Paz',
+    width: 1600,
+    height: 738,
+  },
+  {
+    src: '/images/carrusel/hero-5.png',
+    alt: 'Proyecto arquitectónico — estudio Viviana Girardi en Córdoba',
+    width: 1324,
+    height: 676,
   },
 ];
 
 export const ABOUT_PHOTO = {
-  src: '/images/Viviana.jpeg',
-  alt: 'Retrato de Viviana Girardi',
+  src: '/images/vivi/viviana-girardi.png',
+  alt: 'Viviana Girardi, arquitecta independiente con estudio en Villa Carlos Paz, Córdoba',
+  width: 449,
+  height: 732,
 };
 
-// Placeholders Unsplash — reemplazar con fotos reales de los trabajos de Viviana.
-// El campo `span` controla el ancho dentro de la grilla editorial:
-//   - 'wide'   ocupa 7/12 cols (md+)
-//   - 'narrow' ocupa 5/12 cols (md+)
-//   - 'half'   ocupa 6/12 cols (md+)
+// Trabajos — grilla editorial 12-col que respeta el aspect ratio real de cada imagen.
+// Tipos:
+//   - kind: 'image' | 'video'
+//   - aspect: clase Tailwind (aspect-square, aspect-[4/3], etc.)
+//   - colSpan: 1-12 (md+)
 export const PROJECTS = [
   {
-    id: 'casa-las-glicinas',
-    title: 'Casa Las Glicinas',
-    location: 'Villa Carlos Paz',
+    id: 'causana-malagueno-1',
+    kind: 'image',
+    title: 'Vivienda Familiar',
+    location: 'Causana Malagueño, Córdoba',
     year: '2024',
     type: 'Vivienda unifamiliar',
-    image:
-      'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&q=80&auto=format&fit=crop',
-    alt: 'Vivienda con grandes aberturas y patio interior',
-    span: 'wide',
-    aspect: 'landscape',
+    src: '/images/interiores/vivienda-familiar/causana-malagueno-1.jpeg',
+    alt: 'Interior de vivienda unifamiliar en Causana Malagueño · arquitectura Córdoba',
+    width: 960,
+    height: 960,
+    aspect: 'aspect-square',
+    colSpan: 6,
   },
   {
-    id: 'depto-nueva-cordoba',
-    title: 'Refacción Nueva Córdoba',
-    location: 'Córdoba',
-    year: '2023',
-    type: 'Remodelación integral',
-    image:
-      'https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=1200&q=80&auto=format&fit=crop',
-    alt: 'Living minimalista con luz natural',
-    span: 'narrow',
-    aspect: 'portrait',
-  },
-  {
-    id: 'estudio-cerro',
-    title: 'Estudio en el Cerro',
-    location: 'La Falda',
-    year: '2023',
-    type: 'Vivienda + estudio',
-    image:
-      'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1200&q=80&auto=format&fit=crop',
-    alt: 'Estudio de doble altura con escalera de madera',
-    span: 'narrow',
-    aspect: 'portrait',
-  },
-  {
-    id: 'casa-tres-patios',
-    title: 'Casa de los Tres Patios',
-    location: 'Alta Gracia',
-    year: '2022',
+    id: 'causana-malagueno-2',
+    kind: 'image',
+    title: 'Detalle Interior',
+    location: 'Causana Malagueño, Córdoba',
+    year: '2024',
     type: 'Vivienda unifamiliar',
-    image:
-      'https://images.unsplash.com/photo-1600585154363-67eb9e2e2099?w=1600&q=80&auto=format&fit=crop',
-    alt: 'Galería abierta con vista a patio interno',
-    span: 'wide',
-    aspect: 'landscape',
+    src: '/images/interiores/vivienda-familiar/causana-malagueno-2.jpeg',
+    alt: 'Detalle de interior con paleta cálida · vivienda en Causana Malagueño',
+    width: 960,
+    height: 960,
+    aspect: 'aspect-square',
+    colSpan: 6,
   },
   {
-    id: 'local-cafe',
-    title: 'Café de barrio',
-    location: 'Córdoba',
-    year: '2024',
-    type: 'Comercial',
-    image:
-      'https://images.unsplash.com/photo-1453614512568-c4024d13c247?w=1400&q=80&auto=format&fit=crop',
-    alt: 'Interior cálido de café con maderas y plantas',
-    span: 'half',
-    aspect: 'landscape',
+    id: 'casa-pileta',
+    kind: 'image',
+    title: 'Casa con Pileta',
+    location: 'Villa Carlos Paz, Córdoba',
+    year: '2023',
+    type: 'Vivienda + exterior',
+    src: '/images/piletas/casa-pileta-villa-carlos-paz.jpeg',
+    alt: 'Vivienda con pileta y jardín en Villa Carlos Paz · proyecto integral',
+    width: 1600,
+    height: 1200,
+    aspect: 'aspect-[4/3]',
+    colSpan: 8,
   },
   {
-    id: 'cocina-villa-allende',
-    title: 'Reforma Cocina + Comedor',
-    location: 'Villa Allende',
+    id: 'pileta-exterior',
+    kind: 'image',
+    title: 'Pileta Exterior',
+    location: 'Villa Carlos Paz, Córdoba',
+    year: '2023',
+    type: 'Diseño exterior',
+    src: '/images/piletas/pileta-exterior.jpeg',
+    alt: 'Pileta exterior con deck de madera · diseño paisajístico',
+    width: 1206,
+    height: 2137,
+    aspect: 'aspect-[9/16]',
+    colSpan: 4,
+  },
+  {
+    id: 'plano-arquitectonico',
+    kind: 'image',
+    title: 'Plano Arquitectónico',
+    location: 'Estudio · Córdoba',
     year: '2024',
-    type: 'Remodelación parcial',
-    image:
-      'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1400&q=80&auto=format&fit=crop',
-    alt: 'Cocina con isla y revestimientos cálidos',
-    span: 'half',
-    aspect: 'landscape',
+    type: 'Documentación técnica',
+    src: '/images/planos/plano-arquitectonico.jpeg',
+    alt: 'Plano arquitectónico de vivienda · documentación técnica',
+    width: 1257,
+    height: 1416,
+    aspect: 'aspect-[8/9]',
+    colSpan: 5,
+  },
+  {
+    id: 'render-vivienda',
+    kind: 'image',
+    title: 'Render — En Proceso',
+    location: 'Proyecto en desarrollo',
+    year: '2025',
+    type: 'Render 3D',
+    src: '/images/renders/render-vivienda.jpeg',
+    alt: 'Render arquitectónico 3D de vivienda en proceso de proyecto',
+    width: 1280,
+    height: 720,
+    aspect: 'aspect-video',
+    colSpan: 7,
+  },
+  {
+    id: 'obra-en-construccion',
+    kind: 'image',
+    title: 'Obra en Construcción',
+    location: 'Villa Carlos Paz, Córdoba',
+    year: '2025',
+    type: 'Dirección de obra',
+    src: '/images/obras/obra-en-construccion.jpeg',
+    alt: 'Obra en construcción en Villa Carlos Paz · dirección técnica',
+    width: 900,
+    height: 1402,
+    aspect: 'aspect-[2/3]',
+    colSpan: 4,
+  },
+  {
+    id: 'behind-the-scenes',
+    kind: 'video',
+    title: 'Detrás de la obra',
+    location: 'Visita de obra',
+    year: '2025',
+    type: 'Video',
+    src: '/videos/achicar.mp4',
+    alt: 'Video corto durante una visita de obra',
+    width: 1920,
+    height: 1080,
+    aspect: 'aspect-video',
+    colSpan: 8,
   },
 ];

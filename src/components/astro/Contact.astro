@@ -1,10 +1,10 @@
 ---
 import FadeUp from '../react/FadeUp.tsx';
-import { CONTACT, SERVICE_AREAS, waLink } from '../../lib/content';
+import { CONTACT, SERVICE_AREAS, waLink, SITE } from '../../lib/content';
 ---
 
 <section id="contacto" class="bg-sand-50 py-section">
-  <div class="mx-auto max-w-7xl px-6 md:px-12">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 md:px-12">
     <FadeUp client:visible>
       <p class="text-xs uppercase tracking-[0.25em] text-ink-mute">
         Hablemos
@@ -20,18 +20,18 @@ import { CONTACT, SERVICE_AREAS, waLink } from '../../lib/content';
 
     <div class="mt-16 grid grid-cols-1 gap-12 md:grid-cols-12 md:gap-16">
       <FadeUp client:visible delay={0.1} className="md:col-span-7">
-        <div class="space-y-6">
+        <div>
           <a
             href={waLink}
             target="_blank"
             rel="noopener noreferrer"
-            class="group flex items-center justify-between border-t border-sand-300/60 py-6 text-ink transition-colors hover:text-ink-soft"
+            class="group flex min-h-[64px] items-center justify-between gap-4 border-t border-sand-300/60 py-7 text-ink transition-colors hover:text-ink-soft"
           >
-            <span class="flex items-baseline gap-4">
+            <span class="flex items-baseline gap-3 sm:gap-4">
               <span class="text-xs uppercase tracking-[0.2em] text-ink-mute">
                 01
               </span>
-              <span class="text-2xl md:text-3xl">WhatsApp</span>
+              <span class="text-xl sm:text-2xl md:text-3xl">WhatsApp</span>
             </span>
             <span
               aria-hidden
@@ -43,17 +43,19 @@ import { CONTACT, SERVICE_AREAS, waLink } from '../../lib/content';
 
           <a
             href={`mailto:${CONTACT.email}`}
-            class="group flex items-center justify-between border-t border-sand-300/60 py-6 text-ink transition-colors hover:text-ink-soft"
+            class="group flex min-h-[64px] items-center justify-between gap-4 border-t border-sand-300/60 py-7 text-ink transition-colors hover:text-ink-soft"
           >
-            <span class="flex items-baseline gap-4">
+            <span class="flex min-w-0 items-baseline gap-3 sm:gap-4">
               <span class="text-xs uppercase tracking-[0.2em] text-ink-mute">
                 02
               </span>
-              <span class="text-2xl md:text-3xl">{CONTACT.email}</span>
+              <span class="truncate text-base sm:text-xl md:text-3xl">
+                {CONTACT.email}
+              </span>
             </span>
             <span
               aria-hidden
-              class="text-2xl transition-transform duration-500 group-hover:translate-x-1"
+              class="shrink-0 text-2xl transition-transform duration-500 group-hover:translate-x-1"
             >
               →
             </span>
@@ -62,12 +64,15 @@ import { CONTACT, SERVICE_AREAS, waLink } from '../../lib/content';
       </FadeUp>
 
       <FadeUp client:visible delay={0.2} className="md:col-span-5">
-        <div class="border border-sand-300/60 p-8 md:p-10">
+        <div class="border border-sand-300/60 p-6 sm:p-8 md:p-10">
           <p class="text-xs uppercase tracking-[0.25em] text-ink-mute">
             Dónde trabajo
           </p>
-          <p class="mt-6 font-display text-2xl leading-snug text-ink md:text-3xl">
-            {SERVICE_AREAS.join(' · ')}
+          <address class="mt-6 not-italic font-display text-xl leading-snug text-ink sm:text-2xl md:text-3xl">
+            {SITE.city}, {SITE.province}
+          </address>
+          <p class="mt-4 text-sm text-ink-soft">
+            Área servida: {SERVICE_AREAS.join(' · ')}.
           </p>
           <p class="mt-6 text-sm leading-relaxed text-ink-soft">
             ¿Vivís fuera de estas zonas? Escribime igual — algunos

@@ -1,6 +1,6 @@
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { useEffect, useState } from 'react';
-import { HERO_SLIDES, waLink } from '../../lib/content';
+import { HERO_SLIDES, waLink, SITE } from '../../lib/content';
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -19,12 +19,17 @@ export default function Hero() {
   const slide = HERO_SLIDES[i];
 
   return (
-    <section className="relative h-screen w-full overflow-hidden bg-sand-200">
+    <section className="relative h-[100svh] w-full overflow-hidden bg-sand-200">
       <AnimatePresence>
         <motion.img
           key={slide.src}
           src={slide.src}
           alt={slide.alt}
+          width={slide.width}
+          height={slide.height}
+          loading={i === 0 ? 'eager' : 'lazy'}
+          fetchPriority={i === 0 ? 'high' : 'auto'}
+          decoding={i === 0 ? 'sync' : 'async'}
           className="absolute inset-0 h-full w-full object-cover"
           initial={{ opacity: 0, scale: 1.04 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -33,19 +38,27 @@ export default function Hero() {
         />
       </AnimatePresence>
 
-      <div className="absolute inset-0 bg-gradient-to-b from-ink/30 via-ink/10 to-sand-50/30" />
+      <div className="absolute inset-0 bg-gradient-to-b from-ink/40 via-ink/15 to-sand-50/30" />
 
       <div className="relative z-10 flex h-full flex-col">
-        <header className="flex items-center justify-between px-6 py-8 md:px-12">
-          <span className="font-display text-lg tracking-tight text-sand-50">
-            Viviana Girardi
-          </span>
-          <span className="hidden text-xs uppercase tracking-[0.2em] text-sand-50/80 md:block">
-            Arquitecta · Estudio independiente
+        <header className="flex items-center justify-between px-4 py-6 sm:px-6 md:px-12 md:py-8">
+          <a href="#" aria-label={`${SITE.name} · ${SITE.role}`} className="block">
+            <img
+              src="/images/logo.png"
+              alt={`Logo ${SITE.name} · Arquitecta`}
+              width="240"
+              height="134"
+              fetchPriority="high"
+              decoding="sync"
+              className="h-10 w-auto md:h-12"
+            />
+          </a>
+          <span className="hidden text-xs uppercase tracking-[0.2em] text-sand-50/90 md:block">
+            Arquitecta · Villa Carlos Paz · Córdoba
           </span>
         </header>
 
-        <div className="mt-auto flex items-end px-6 pb-[12vh] md:px-12">
+        <div className="mt-auto flex items-end px-4 pb-16 sm:px-6 md:px-12 md:pb-[12vh]">
           <div className="max-w-4xl">
             <motion.h1
               className="text-display-xl text-sand-50"
@@ -63,6 +76,7 @@ export default function Hero() {
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.9, delay: 0.5, ease: EASE }}
             >
+              Estudio de arquitectura en Villa Carlos Paz y Córdoba.
               Transformamos tus ideas en espacios funcionales y estéticos,
               acompañándote en cada paso del proceso.
             </motion.p>
@@ -71,7 +85,7 @@ export default function Hero() {
               href={waLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="group mt-10 inline-flex items-center gap-3 border border-sand-50/80 px-7 py-3.5 text-sm uppercase tracking-[0.18em] text-sand-50 transition-colors duration-500 hover:bg-sand-50 hover:text-ink"
+              className="group mt-10 inline-flex min-h-[48px] items-center gap-3 border border-sand-50/80 px-7 py-3.5 text-sm uppercase tracking-[0.18em] text-sand-50 transition-colors duration-500 hover:bg-sand-50 hover:text-ink"
               initial={{ y: 16, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.9, delay: 0.75, ease: EASE }}
@@ -87,7 +101,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="absolute bottom-6 right-6 z-20 flex gap-2 md:right-12">
+        <div className="absolute bottom-4 right-4 z-20 flex gap-2 sm:bottom-6 sm:right-6 md:right-12">
           {HERO_SLIDES.map((_, idx) => (
             <button
               key={idx}

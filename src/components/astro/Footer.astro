@@ -4,24 +4,56 @@ const year = new Date().getFullYear();
 ---
 
 <footer class="border-t border-sand-300/60 bg-sand-100">
-  <div class="mx-auto max-w-7xl px-6 py-16 md:px-12 md:py-20">
+  <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:px-12 md:py-20">
     <div class="grid grid-cols-1 gap-12 md:grid-cols-12">
       <div class="md:col-span-5">
         <p class="font-display text-2xl text-ink">{SITE.name}</p>
         <p class="mt-2 text-sm text-ink-soft">
           {SITE.role} · Estudio independiente
         </p>
+        <address class="mt-4 text-sm not-italic text-ink-soft">
+          {SITE.city}, {SITE.province}<br />
+          Argentina
+        </address>
       </div>
 
       <nav class="md:col-span-3" aria-label="Navegación">
         <p class="text-xs uppercase tracking-[0.25em] text-ink-mute">
           Navegar
         </p>
-        <ul class="mt-4 space-y-2 text-sm text-ink-soft">
-          <li><a href="#sobre-mi" class="transition-colors hover:text-ink">Sobre mí</a></li>
-          <li><a href="#servicios" class="transition-colors hover:text-ink">Servicios</a></li>
-          <li><a href="#trabajos" class="transition-colors hover:text-ink">Trabajos</a></li>
-          <li><a href="#contacto" class="transition-colors hover:text-ink">Contacto</a></li>
+        <ul class="mt-4 space-y-1 text-sm text-ink-soft">
+          <li>
+            <a
+              href="#sobre-mi"
+              class="inline-block min-h-[44px] py-2 transition-colors hover:text-ink"
+            >
+              Sobre mí
+            </a>
+          </li>
+          <li>
+            <a
+              href="#servicios"
+              class="inline-block min-h-[44px] py-2 transition-colors hover:text-ink"
+            >
+              Servicios
+            </a>
+          </li>
+          <li>
+            <a
+              href="#trabajos"
+              class="inline-block min-h-[44px] py-2 transition-colors hover:text-ink"
+            >
+              Trabajos
+            </a>
+          </li>
+          <li>
+            <a
+              href="#contacto"
+              class="inline-block min-h-[44px] py-2 transition-colors hover:text-ink"
+            >
+              Contacto
+            </a>
+          </li>
         </ul>
       </nav>
 
@@ -29,13 +61,13 @@ const year = new Date().getFullYear();
         <p class="text-xs uppercase tracking-[0.25em] text-ink-mute">
           Redes
         </p>
-        <ul class="mt-4 space-y-2 text-sm text-ink-soft">
+        <ul class="mt-4 space-y-1 text-sm text-ink-soft">
           <li>
             <a
               href={CONTACT.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              class="transition-colors hover:text-ink"
+              class="inline-block min-h-[44px] py-2 transition-colors hover:text-ink"
             >
               Instagram ↗
             </a>
@@ -45,7 +77,7 @@ const year = new Date().getFullYear();
               href={CONTACT.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              class="transition-colors hover:text-ink"
+              class="inline-block min-h-[44px] py-2 transition-colors hover:text-ink"
             >
               LinkedIn ↗
             </a>
@@ -53,7 +85,7 @@ const year = new Date().getFullYear();
           <li>
             <a
               href={`mailto:${CONTACT.email}`}
-              class="transition-colors hover:text-ink"
+              class="inline-block min-h-[44px] break-all py-2 transition-colors hover:text-ink"
             >
               {CONTACT.email}
             </a>
