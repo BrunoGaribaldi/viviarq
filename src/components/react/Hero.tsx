@@ -16,6 +16,10 @@ export default function Hero() {
     return () => clearInterval(id);
   }, [reduce]);
 
+  const goPrev = () =>
+    setI((x) => (x - 1 + HERO_SLIDES.length) % HERO_SLIDES.length);
+  const goNext = () => setI((x) => (x + 1) % HERO_SLIDES.length);
+
   const slide = HERO_SLIDES[i];
 
   return (
@@ -101,18 +105,38 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="absolute bottom-4 right-4 z-20 flex gap-2 sm:bottom-6 sm:right-6 md:right-12">
-          {HERO_SLIDES.map((_, idx) => (
+        <div className="absolute bottom-4 right-4 z-20 flex items-center gap-3 sm:bottom-6 sm:right-6 md:right-12">
+          <div className="flex gap-2">
+            {HERO_SLIDES.map((_, idx) => (
+              <button
+                key={idx}
+                type="button"
+                aria-label={`Ir a la imagen ${idx + 1}`}
+                onClick={() => setI(idx)}
+                className={`h-px w-10 transition-all duration-500 ${
+                  idx === i ? 'bg-sand-50' : 'bg-sand-50/30 hover:bg-sand-50/60'
+                }`}
+              />
+            ))}
+          </div>
+          <div className="ml-2 flex gap-2">
             <button
-              key={idx}
               type="button"
-              aria-label={`Ir a la imagen ${idx + 1}`}
-              onClick={() => setI(idx)}
-              className={`h-px w-10 transition-all duration-500 ${
-                idx === i ? 'bg-sand-50' : 'bg-sand-50/30 hover:bg-sand-50/60'
-              }`}
-            />
-          ))}
+              aria-label="Imagen anterior"
+              onClick={goPrev}
+              className="flex h-10 w-10 items-center justify-center border border-sand-50/60 text-sand-50 transition-colors duration-300 hover:border-sand-50 hover:bg-sand-50 hover:text-ink"
+            >
+              <span aria-hidden>←</span>
+            </button>
+            <button
+              type="button"
+              aria-label="Imagen siguiente"
+              onClick={goNext}
+              className="flex h-10 w-10 items-center justify-center border border-sand-50/60 text-sand-50 transition-colors duration-300 hover:border-sand-50 hover:bg-sand-50 hover:text-ink"
+            >
+              <span aria-hidden>→</span>
+            </button>
+          </div>
         </div>
       </div>
     </section>

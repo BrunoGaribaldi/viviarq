@@ -29,7 +29,7 @@ export const SEO = {
     'planos municipales Córdoba',
     'arquitecta independiente Carlos Paz',
   ].join(', '),
-  ogImage: '/images/carrusel/hero-1.jpeg',
+  ogImage: '/images/carrusel/hero-2.jpeg',
 };
 
 export const CONTACT = {
@@ -79,25 +79,13 @@ export const SERVICES = [
 ];
 
 // Hero — 5 imágenes landscape de alta resolución (≥1300px ancho).
-// Las imágenes verticales/pequeñas se descartaron del hero para evitar pixelado.
+// Orden: hero-2, hero-4, hero-5, hero-1, hero-3
 export const HERO_SLIDES = [
-  {
-    src: '/images/carrusel/hero-1.jpeg',
-    alt: 'Vivienda contemporánea diseñada por estudio de arquitectura en Villa Carlos Paz',
-    width: 1523,
-    height: 1007,
-  },
   {
     src: '/images/carrusel/hero-2.jpeg',
     alt: 'Interior cálido con materiales nobles · proyecto residencial Córdoba',
     width: 1600,
     height: 910,
-  },
-  {
-    src: '/images/carrusel/hero-3.jpeg',
-    alt: 'Espacio integrado con luz natural · arquitectura funcional Carlos Paz',
-    width: 1473,
-    height: 820,
   },
   {
     src: '/images/carrusel/hero-4.jpeg',
@@ -111,6 +99,18 @@ export const HERO_SLIDES = [
     width: 1324,
     height: 676,
   },
+  {
+    src: '/images/carrusel/hero-1.jpeg',
+    alt: 'Vivienda contemporánea diseñada por estudio de arquitectura en Villa Carlos Paz',
+    width: 1523,
+    height: 1007,
+  },
+  {
+    src: '/images/carrusel/hero-3.jpeg',
+    alt: 'Espacio integrado con luz natural · arquitectura funcional Carlos Paz',
+    width: 1473,
+    height: 820,
+  },
 ];
 
 export const ABOUT_PHOTO = {
@@ -122,36 +122,36 @@ export const ABOUT_PHOTO = {
 
 // Trabajos — grilla editorial 12-col que respeta el aspect ratio real de cada imagen.
 // Tipos:
-//   - kind: 'image' | 'video'
+//   - kind: 'image' | 'video' | 'collage'
 //   - aspect: clase Tailwind (aspect-square, aspect-[4/3], etc.)
 //   - colSpan: 1-12 (md+)
 export const PROJECTS = [
   {
-    id: 'causana-malagueno-1',
+    id: 'vivienda-unifamiliar-1',
     kind: 'image',
-    title: 'Vivienda Familiar',
-    location: 'Causana Malagueño, Córdoba',
+    title: 'Vivienda Unifamiliar',
+    location: 'Córdoba',
     year: '2024',
     type: 'Vivienda unifamiliar',
-    src: '/images/interiores/vivienda-familiar/causana-malagueno-1.jpeg',
-    alt: 'Interior de vivienda unifamiliar en Causana Malagueño · arquitectura Córdoba',
-    width: 960,
-    height: 960,
-    aspect: 'aspect-square',
+    src: '/images/fotos/vivienda-unifamiliar-1.png',
+    alt: 'Vivienda unifamiliar diseñada por estudio Viviana Girardi · Córdoba',
+    width: 426,
+    height: 717,
+    aspect: 'aspect-[3/4]',
     colSpan: 6,
   },
   {
-    id: 'causana-malagueno-2',
+    id: 'vivienda-unifamiliar-2',
     kind: 'image',
-    title: 'Detalle Interior',
-    location: 'Causana Malagueño, Córdoba',
+    title: 'Vivienda Unifamiliar',
+    location: 'Córdoba',
     year: '2024',
     type: 'Vivienda unifamiliar',
-    src: '/images/interiores/vivienda-familiar/causana-malagueno-2.jpeg',
-    alt: 'Detalle de interior con paleta cálida · vivienda en Causana Malagueño',
-    width: 960,
-    height: 960,
-    aspect: 'aspect-square',
+    src: '/images/fotos/vivienda-unifamiliar-2.jpeg',
+    alt: 'Detalle de vivienda unifamiliar · proyecto residencial Córdoba',
+    width: 655,
+    height: 885,
+    aspect: 'aspect-[3/4]',
     colSpan: 6,
   },
   {
@@ -184,45 +184,19 @@ export const PROJECTS = [
   },
   {
     id: 'plano-arquitectonico',
-    kind: 'image',
+    kind: 'collage',
     title: 'Plano Arquitectónico',
     location: 'Estudio · Córdoba',
     year: '2024',
-    type: 'Documentación técnica',
+    type: 'Documentación + obra',
     src: '/images/planos/plano-arquitectonico.jpeg',
     alt: 'Plano arquitectónico de vivienda · documentación técnica',
+    overlaySrc: '/images/planos/obra-plano.png',
+    overlayAlt: 'Obra en construcción correspondiente al plano',
     width: 1257,
     height: 1416,
     aspect: 'aspect-[8/9]',
-    colSpan: 5,
-  },
-  {
-    id: 'render-vivienda',
-    kind: 'image',
-    title: 'Render — En Proceso',
-    location: 'Proyecto en desarrollo',
-    year: '2025',
-    type: 'Render 3D',
-    src: '/images/renders/render-vivienda.jpeg',
-    alt: 'Render arquitectónico 3D de vivienda en proceso de proyecto',
-    width: 1280,
-    height: 720,
-    aspect: 'aspect-video',
     colSpan: 7,
-  },
-  {
-    id: 'obra-en-construccion',
-    kind: 'image',
-    title: 'Obra en Construcción',
-    location: 'Villa Carlos Paz, Córdoba',
-    year: '2025',
-    type: 'Dirección de obra',
-    src: '/images/obras/obra-en-construccion.jpeg',
-    alt: 'Obra en construcción en Villa Carlos Paz · dirección técnica',
-    width: 900,
-    height: 1402,
-    aspect: 'aspect-[2/3]',
-    colSpan: 4,
   },
   {
     id: 'behind-the-scenes',
@@ -236,6 +210,91 @@ export const PROJECTS = [
     width: 1920,
     height: 1080,
     aspect: 'aspect-video',
-    colSpan: 8,
+    colSpan: 5,
+  },
+  {
+    id: 'interior-causana-1',
+    kind: 'image',
+    title: 'Interiores',
+    location: 'Causana Malagueño, Córdoba',
+    year: '2024',
+    type: 'Interior',
+    src: '/images/interiores/vivienda-familiar/causana-malagueno-1.jpeg',
+    alt: 'Interior de vivienda familiar en Causana Malagueño · arquitectura Córdoba',
+    width: 960,
+    height: 960,
+    aspect: 'aspect-square',
+    colSpan: 4,
+  },
+  {
+    id: 'interior-causana-2',
+    kind: 'image',
+    title: 'Interiores',
+    location: 'Causana Malagueño, Córdoba',
+    year: '2024',
+    type: 'Interior',
+    src: '/images/interiores/vivienda-familiar/causana-malagueno-2.jpeg',
+    alt: 'Detalle de interior con paleta cálida · vivienda en Causana Malagueño',
+    width: 960,
+    height: 960,
+    aspect: 'aspect-square',
+    colSpan: 4,
+  },
+  {
+    id: 'interior-causana-3',
+    kind: 'image',
+    title: 'Interiores',
+    location: 'Causana Malagueño, Córdoba',
+    year: '2024',
+    type: 'Interior',
+    src: '/images/interiores/vivienda-familiar/causana-malagueno-3.jpeg',
+    alt: 'Espacio integrado · vivienda familiar en Causana Malagueño',
+    width: 960,
+    height: 960,
+    aspect: 'aspect-square',
+    colSpan: 4,
+  },
+  {
+    id: 'interior-detalle-1',
+    kind: 'image',
+    title: 'Interiores',
+    location: 'Vivienda Familiar',
+    year: '2024',
+    type: 'Interior',
+    src: '/images/interiores/vivienda-familiar/interior-vivienda-familiar.jpeg',
+    alt: 'Detalle de interior cálido · vivienda familiar',
+    width: 960,
+    height: 1280,
+    aspect: 'aspect-[3/4]',
+    colSpan: 7,
+  },
+  {
+    id: 'interior-detalle-2',
+    kind: 'image',
+    title: 'Interiores',
+    location: 'Vivienda Familiar',
+    year: '2024',
+    type: 'Interior',
+    src: '/images/interiores/vivienda-familiar/interior-detalle.png',
+    alt: 'Detalle de ambientación interior · vivienda familiar',
+    width: 426,
+    height: 717,
+    aspect: 'aspect-[3/4]',
+    colSpan: 5,
   },
 ];
+
+// Detalles — fotos auxiliares usadas como acentos visuales en otras secciones.
+export const DETAIL_RENDER = {
+  src: '/images/renders/render-vivienda.jpeg',
+  alt: 'Render arquitectónico 3D de vivienda en proceso de proyecto',
+  width: 1280,
+  height: 720,
+};
+
+export const DETAIL_OBRA = {
+  src: '/images/obras/obra-en-construccion.jpeg',
+  alt: 'Obra en construcción en Villa Carlos Paz · dirección técnica',
+  width: 900,
+  height: 1402,
+};
